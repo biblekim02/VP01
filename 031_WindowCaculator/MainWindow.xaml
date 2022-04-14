@@ -1,0 +1,225 @@
+﻿<Window x:Class="_031_WindowCaculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_031_WindowCaculator"
+        mc:Ignorable="d"
+        Title="윈도우계산기" Height="550" Width="400"
+        MinHeight="500" MinWidth="300"
+        Background="WhiteSmoke">
+    
+    <DockPanel>
+    
+        <!--수식창과 계산 결과-->
+        <Grid DockPanel.Dock="Top" Height="100">
+            <TextBox HorizontalContentAlignment="Right"
+                     x:Name="txtExp"
+                     Margin="15"
+                     FontSize="16"
+                     Background="WhiteSmoke" BorderThickness="0"
+                     ></TextBox>
+            <TextBox HorizontalContentAlignment="Right"
+                     x:Name="txtResult"
+                     Margin="15"
+                     VerticalAlignment="Bottom"
+                     FontSize="36" FontWeight="Bold"
+                     Background="WhiteSmoke" BorderThickness="0"
+                     >0</TextBox>
+        </Grid>
+        
+        <!--메모리버튼-->
+        <Grid DockPanel.Dock="Top" Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" BorderThickness="0" Background="WhiteSmoke"
+                    x:Name="btnMC"
+                    FontSize="14" FontWeight="Bold"
+                    >MC</Button>
+            <Button Grid.Column="1" BorderThickness="0" Background="WhiteSmoke"
+                    x:Name="btnMR"
+                    FontSize="14" FontWeight="Bold"
+                    >MR</Button>
+            <Button Grid.Column="2" BorderThickness="0" Background="WhiteSmoke"
+                    x:Name="btnMplus"
+                    FontSize="14" FontWeight="Bold"
+                    >M+</Button>
+            <Button Grid.Column="3" BorderThickness="0" Background="WhiteSmoke"
+                    x:Name="Mminus"
+                    FontSize="14" FontWeight="Bold"
+                    >M-</Button>
+            <Button Grid.Column="4" BorderThickness="0" Background="WhiteSmoke"
+                    x:Name="MS"
+                    FontSize="14" FontWeight="Bold"
+                    >MS</Button>
+        </Grid>
+        
+        <!--숫자 및 연산자-->
+        <Grid Background="LightGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Grid.Column="0" Margin="1"
+                    x:Name="btnPercent"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="btnPercent_Click"
+                    >%</Button>
+            <Button Grid.Row="0" Grid.Column="1" Margin="1"
+                    x:Name="btnSqrt"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="btnSqrt_Click"
+                    >√</Button>
+            <Button Grid.Row="0" Grid.Column="2" Margin="1"
+                    x:Name="btnSqr"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="btnSqr_Click"
+                    >x²</Button>
+            <Button Grid.Row="0" Grid.Column="3" Margin="1"
+                    x:Name="btnRecip"
+                    FontSize="18"
+                    BorderThickness="0" Click="btnRecip_Click"
+                    >1/x</Button>
+
+            <Button Grid.Row="1" Grid.Column="0" Margin="1"
+                    x:Name="btnCE"
+                    FontSize="18"
+                    BorderThickness="0" Click="btnCE_Click"
+                    >CE</Button>
+            <Button Grid.Row="1" Grid.Column="1" Margin="1"
+                    x:Name="btnC"
+                    FontSize="18"
+                    BorderThickness="0" Click="btnC_Click"
+                    >C</Button>
+            <Button Grid.Row="1" Grid.Column="2" Margin="1"
+                    x:Name="btnDelete"
+                    FontSize="18"
+                    BorderThickness="0" Click="btnDelete_Click"
+                    >⌫</Button>
+            <Button Grid.Row="1" Grid.Column="3" Margin="1"
+                    x:Name="btnDivide"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="op_Click"
+                    >÷</Button>
+
+            <Button Grid.Row="2" Grid.Column="0" Margin="1"
+                    x:Name="btn7"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >7</Button>
+            <Button Grid.Row="2" Grid.Column="1" Margin="1"
+                    x:Name="btn8"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >8</Button>
+            <Button Grid.Row="2" Grid.Column="2" Margin="1"
+                    x:Name="btn9"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >9</Button>
+            <Button Grid.Row="2" Grid.Column="3" Margin="1"
+                    x:Name="btnTimes"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="op_Click"
+                    >x</Button>
+
+            <Button Grid.Row="3" Grid.Column="0" Margin="1"
+                    x:Name="btn4"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >4</Button>
+            <Button Grid.Row="3" Grid.Column="1" Margin="1"
+                    x:Name="btn5"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >5</Button>
+            <Button Grid.Row="3" Grid.Column="2" Margin="1"
+                    x:Name="btn6"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >6</Button>
+            <Button Grid.Row="3" Grid.Column="3" Margin="1"
+                    x:Name="btnMinus"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="op_Click"
+                    >-</Button>
+
+            <Button Grid.Row="4" Grid.Column="0" Margin="1"
+                    x:Name="btn1"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >1</Button>
+            <Button Grid.Row="4" Grid.Column="1" Margin="1"
+                    x:Name="btn2"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >2</Button>
+            <Button Grid.Row="4" Grid.Column="2" Margin="1"
+                    x:Name="btn3"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >3</Button>
+            <Button Grid.Row="4" Grid.Column="3" Margin="1"
+                    x:Name="btnPlus"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="op_Click"
+                    >+</Button>
+
+            <Button Grid.Row="5" Grid.Column="0" Margin="1"
+                    x:Name="btnPlusMinus"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="btnPlusMinus_Click"
+                    >±</Button>
+            <Button Grid.Row="5" Grid.Column="1" Margin="1"
+                    x:Name="btn0"
+                    FontSize="24" FontWeight="Bold"
+                    BorderThickness="0" Background="WhiteSmoke"
+                    Click="btn_Click"
+                    >0</Button>
+            <Button Grid.Row="5" Grid.Column="2" Margin="1"
+                    x:Name="btnDot"
+                    Click="btnDot_Click"
+                    FontSize="18"
+                    BorderThickness="0"
+                    >.</Button>
+            <Button Grid.Row="5" Grid.Column="3" Margin="1"
+                    x:Name="btnEqual"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Click="btnEqual_Click"
+                    >＝</Button>
+        </Grid>
+    </DockPanel>
+</Window>
